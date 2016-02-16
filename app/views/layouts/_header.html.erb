@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand">台灣內苑佛教文化學會</span>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="<%= yield(:index) %>"><%= link_to "首頁", "#" %></li>
+        <li class="<%= yield(:about) %>"><%= link_to "關於內苑", "#" %></li>
+        <li class="<%= yield(:news) %>"><%= link_to "最新訊息", "#" %></li>
+        <li class="<%= yield(:course) %>"><%= link_to "開課訊息", "#" %></li>
+        <li class="<%= yield(:activityphoto) %>"><%= link_to "活動剪影", "#" %></li>
+        <li class="<%= yield(:faq) %>"><%= link_to 'FAQs', "#" %></li>
+        <li class="<%= yield(:post) %>"><%= link_to "Blog", "#" %></li>
+        <li class="<%= yield(:forum) %>"><%= link_to "Forum", "#" %></li>
+        <li class="<%= yield(:links) %>"><%= link_to "好站相連", "#" %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  會員 <i class="fa fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <% #if user_signed_in? %>
+              <li class="<%= yield(:edit_profile) %>"><%=  link_to "我的檔案", "#" %></li>
+              <li class="divider"></li>
+              <li><%= link_to "登出", "#", method: :delete %></li>
+            <% #else %>
+              <li class="<%= yield(:register) %>"><%= link_to "註冊", "#" %></li>
+              <li class="<%= yield(:login) %>"><%= link_to "登入", "#"%></li>
+            <% #end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
