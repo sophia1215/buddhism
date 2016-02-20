@@ -11,21 +11,20 @@
   <%= contact.file_field :avatar, accept: 'image/png,image/gif,image/jpeg, image/jpg', id: 'uploadAvatar' %>
   <p class="deletePhoto">Delete</p>
 
-  <%= contact.text_field :address1, placeholder: "Address 1", :class => "form-control" %>
-  <%= contact.text_field :address2, placeholder: "Address 2", :class => "form-control" %>
-  <%= contact.text_field :city, placeholder: "City", :class => "form-control" %>
+  <%= contact.text_field :email, placeholder: "Email", :class => "form-control", readonly: true %>
 
   <%= contact.fields_for :typ_countries do |country|%>
-    <%= country.collection_select :id, TypCountry.order(:country),:id,:country, {prompt: "Please Select Country", selected: @contactInfo["typ_country_id"] }, {:class => "form-control"} %>
+    <%= country.collection_select :id, TypCountry.order(:id),:id,:country, {prompt: "請選擇縣市", selected: @contactInfo["typ_country_id"] }, {:class => "form-control"} %>
   <% end %>
 
   <%= contact.fields_for :typ_regions do |region|%>
-    <%= region.grouped_collection_select :id, TypCountry.order(:country),:typ_regions, :country, :id, :name, {prompt: "Please Select Region", selected: @contactInfo["typ_region_id"] }, {:class => "form-control"}%>
+    <%= region.grouped_collection_select :id, TypCountry.order(:country),:typ_regions, :country, :id, :name, {prompt: "請選擇鄉鎮市區", selected: @contactInfo["typ_region_id"] }, {:class => "form-control"}%>
   <% end %>
 
-  <%= contact.text_field :postal_code, placeholder: "Postal Code", :class => "form-control" %>
-  <%= contact.text_field :email, placeholder: "Email", :class => "form-control", readonly: true %>
-  <%= contact.text_field :cell_number, placeholder: "Cell Number", :class => "form-control" %>
+  <%= contact.text_field :postal_code, placeholder: "郵遞區號", :class => "form-control" %>
+  <%= contact.text_field :address1, placeholder: "詳細地址", :class => "form-control" %>
+
+  <%= contact.text_field :cell_number, placeholder: "手機電話", :class => "form-control" %>
   <%= contact.hidden_field :member_id, value: current_member.id %>
 
 <% end %>

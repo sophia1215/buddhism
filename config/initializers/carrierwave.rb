@@ -1,4 +1,3 @@
-
 CarrierWave.configure do |config|
   module CarrierWave
     module MiniMagick

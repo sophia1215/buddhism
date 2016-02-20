@@ -4,8 +4,6 @@
 #
 #  id             :integer          not null, primary key
 #  address1       :string           not null
-#  address2       :string
-#  city           :string           not null
 #  postal_code    :string           not null
 #  email          :string           not null
 #  cell_number    :string
@@ -27,7 +25,6 @@ class MemberContact < ActiveRecord::Base
   validates :typ_country, presence: true
   validates :typ_region, presence: true
   validates :address1, presence: true
-  validates :city, presence: true
   validates :postal_code, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
@@ -36,10 +33,10 @@ class MemberContact < ActiveRecord::Base
   mount_uploader  :avatar, AvatarUploader
 
   geocoded_by :address
-  after_validation :geocode, :if => lambda{ |obj| obj.address1_changed? && obj.city_changed? && obj.postal_code_changed?}
+  after_validation :geocode, :if => lambda{ |obj| obj.address1_changed? && obj.postal_code_changed?}
 
   # Whenever any of the 3 fields below change, then we re-geocode
   def address
-    [city, postal_code, address1].compact.join(', ')
+    [postal_code, address1].compact.join(', ')
   end
 end

@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id                     :integer          not null, primary key
+#  first_name             :string           not null
+#  last_name              :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#
+
 class MembersController < ApplicationController
   def edit
     # All the setup that is needed to build the edit page view
@@ -47,6 +72,6 @@ class MembersController < ApplicationController
   private
 
   def update_member_params
-    params.require(:member).permit(member_contacts_attributes: [:address1, :address2, :city, {typ_countries: :id}, {typ_regions: :id}, :postal_code, :email, :cell_number, :member_id, :avatar])
+    params.require(:member).permit(member_contacts_attributes: [:address1, {typ_countries: :id}, {typ_regions: :id}, :postal_code, :email, :cell_number, :member_id, :avatar])
   end
 end

@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 20160217203719) do
 
   create_table "member_contacts", force: :cascade do |t|
     t.string   "address1",       null: false
-    t.string   "address2"
-    t.string   "city",           null: false
     t.string   "postal_code",    null: false
     t.string   "email",          null: false
     t.string   "cell_number"
@@ -66,19 +64,11 @@ ActiveRecord::Schema.define(version: 20160217203719) do
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
   create_table "typ_countries", force: :cascade do |t|
-    t.string   "iso"
-    t.string   "iso3"
-    t.string   "fips"
     t.string   "country"
-    t.string   "continent"
-    t.string   "currency_code"
-    t.string   "currency_name"
-    t.string   "phone_prefix"
     t.string   "postal_code"
-    t.string   "languages"
     t.string   "geonameid"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "typ_regions", force: :cascade do |t|
