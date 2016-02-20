@@ -1,0 +1,7 @@
+<% if signed_in? %>
+<div class="col-sm3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+    <li class="sidebar_overview"><%= link_to "Overview", edit_member_path(current_member) %></li>
+  </ul>
+</div>
+<% end %>

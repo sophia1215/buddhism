@@ -1,0 +1,29 @@
+<% provide(:register, "active") %>
+<% provide(:title, "註冊") %>
+
+<div class="col-md-6 col-md-push-3">
+  <center><h1>註冊</h1></center>
+
+	<%= simple_form_for(resource, as: resource_name, url: member_registration_path) do |f| %>
+
+    <div id="error_explanation" class="col-md-12">
+        <%#= devise_error_messages! %>
+        <%#= f.error_notification %>
+    </div>
+
+	  <div  class="col-md-12">
+	    <%= f.input :first_name, :label=>false, required: true, autofocus: true, placeholder: "First Name" %>
+	    <%= f.input :last_name, :label=>false, required: true, autofocus: true, placeholder: "Last Name" %>
+	    <%= f.input :email, :label=>false, required: true, autofocus: true, placeholder: "sophia@example.com" %>
+	    <%= f.input :password, :label=>false, required: true, autocomplete: "off", placeholder: "Password" %>
+	    <%= f.input :password_confirmation, :label=>false, required: true, autocomplete: "off", placeholder: "Password Confirmation" %>
+
+      <div class="actions shared_links">
+        <%= f.submit "註冊", class: "btn btn-large btn-primary" %>
+      </div>
+      <div>
+        <%= render "members/shared/links" %>
+      </div>
+    </div>
+  <% end %>
+</div>

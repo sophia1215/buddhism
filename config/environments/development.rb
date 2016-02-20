@@ -38,4 +38,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Devise section
+  config.action_mailer.default_options = { from: 'no-reply@example.com'}
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default :charset => 'utf-8'
+  # config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
+
 end

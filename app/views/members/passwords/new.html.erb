@@ -1,0 +1,19 @@
+<% provide(:title, "Recover your password") %>
+
+<div class="col-md-6 col-md-push-3">
+  <center><h1>Forgot your password?</h1></center>
+
+	<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  <%= f.error_notification %>
+
+	  <div class="form-inputs">
+	    <%= f.input :email, :label=>false, required: true, autofocus: true, placeholder: "sophia@example.com" %>
+	  </div>
+
+	  <div class="form-actions">
+	    <%= f.button :submit, "Send me reset password instructions", class: "btn btn-large btn-primary" %>
+	  </div>
+	<% end %>
+
+	<%= render "members/shared/links" %>
+</div>
